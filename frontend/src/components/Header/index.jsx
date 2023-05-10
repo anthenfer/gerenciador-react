@@ -1,13 +1,13 @@
 import './header.css';
+import { NavLink } from 'react-router-dom';
 
-function Header({title, subtitle}){
+function Header({title}){
+
     return(
         <header>
-            <a href="">Usuários</a>
-            <a href="">Cadastrar Usuário</a>
-            <a href="">Cadastrar Endereço</a>
-            <h1> {title} </h1>
-            <h2> {subtitle} </h2>
+            <NavLink to='/'>Usuários</NavLink>
+            <NavLink to='/registro'>Cadastrar usuário</NavLink>
+            <h1>{title}</h1>
         </header>
     );
 };

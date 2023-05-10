@@ -1,38 +1,39 @@
-import './userScreen.css'
-import Header from '../../components/Header'
+import './usersScreen.css';
+import Header from '../../components/Header';
 import UserCard from '../../components/UserCard';
 import { useState, useEffect } from 'react';
 import api from '../../api/api';
 
-function UserScreen(){
+function UsersScreen(){
 
     const [users, setUsers] = useState([]);
 
-    useEffect(() => {
-       async function getUsers(){
+    useEffect(()=>{
+        async function getUsers(){
             const response = await api.get('/users');
-            setUsers(response.data)
-       }
+            setUsers(response.data);
+        }
 
-       getUsers();
-
-    }, []);
+        getUsers();
+    },[]);
 
     return(
         <>
-            <Header title="Usuários cadastrados" />
+            <Header title="Usuários cadastrados"/>
             <main>
-                {users.map(user =>
+                {users.map(user=> 
                         <UserCard 
-                            key = {user.id}
-                            id = {user.id} 
-                            name = {user.name} 
-                            email = {user.email}
-                        />
+                            key={user.id}
+                            id={user.id} 
+                            name={user.name} 
+                            email={user.email}
+                            addresses={user.addresses}
+                        /> 
                 )}
             </main>
         </>
     );
+
 }
 
-export default UserScreen;
+export default UsersScreen;
